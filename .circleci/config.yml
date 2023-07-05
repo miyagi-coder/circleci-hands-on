@@ -4,6 +4,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.1.0
+  email: cinotify/email@1.2.1
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
@@ -37,3 +38,9 @@ workflows:
       - say-hello
       - unittest
       - node/test
+  example-workflow:
+    jobs:
+      - email/send:
+          body: 'Configure this notification at https://www.cinotify.cc/'
+          subject: CircleCI job started
+          to: miyagi@iret.co.jp
